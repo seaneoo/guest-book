@@ -2,7 +2,7 @@ import prisma from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 
 export async function GET(_request: Request) {
-  const guests = await prisma.guest.findMany()
+  const guests = await prisma.guest.findMany({ orderBy: { date: 'desc' } })
   return NextResponse.json({ guests }, { status: 200 })
 }
 
